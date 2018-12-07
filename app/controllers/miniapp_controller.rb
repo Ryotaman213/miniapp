@@ -16,7 +16,7 @@ class MiniappController < ApplicationController
 
     private
       def blog_params
-      params.permit(:text)
+      params.permit(:text, :created_at)
     end
 
   def move_to_index
