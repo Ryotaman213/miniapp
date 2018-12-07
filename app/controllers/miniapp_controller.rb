@@ -4,6 +4,7 @@ class MiniappController < ApplicationController
 
   def index
     @blogs = Blog.all.order("created_at DESC").page(params[:page]).per(4)
+
   end
 
   def new
