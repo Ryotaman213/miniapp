@@ -23,6 +23,11 @@ class MiniappController < ApplicationController
     @blog = Blog.find(params[:id])
   end
 
+  def update
+    blog = Blog.find(params[:id])
+    blog.update(tweet_params) if blog.user_id == current_user.id
+  end
+
     private
       def blog_params
       params.permit(:text, :created_at)
