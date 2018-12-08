@@ -1,13 +1,13 @@
-class MiniappController < ApplicationController
+class BlogsController < ApplicationController
 
-    before_action :move_to_index, except: :index
+  before_action :move_to_index, except: :index
 
   def index
     @blogs = Blog.includes(:user).page(params[:page]).per(4).order("created_at DESC")
-
   end
 
   def new
+    @blog = Blog.new
   end
 
   def create
@@ -25,7 +25,7 @@ class MiniappController < ApplicationController
 
   def update
     blog = Blog.find(params[:id])
-    blog.update(tweet_params) if blog.user_id == current_user.id
+    blog.update(blog_params) if blog.user_id == current_user.id
   end
 
     private
