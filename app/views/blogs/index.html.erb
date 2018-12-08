@@ -1,18 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Sample</title>
-  <style type="text/css" href="./style.scss"></style>
 
-  <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-
-  <script
-  src="https://code.jquery.com/jquery-3.3.1.js"
-  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
   crossorigin="anonymous"></script>
 </head>
 <body>
@@ -29,10 +18,10 @@
         <li><a href="/blogs/new">ブログを書く</a></li>
           <% else %>
         <li>
-          <%= link_to "Login",new_user_session_path,class: 'post' %>
+          <%= link_to "Login",new_user_session_path, method: 'get' %>
           </li>
         <li>
-          <%= link_to "Register", new_user_registration_path, class: 'post' %>
+          <%= link_to "Register", new_user_registration_path, method: 'get' %>
           s</li>
           <% end %>
       </ul>
@@ -41,7 +30,6 @@
 
 
      <% @blogs.each do |blog| %>
-     <% if user_signed_in? && current_user.id == blog.user_id %>
       <div class="row">
         <div class="col s12 m6">
           <div class="card white">
@@ -49,6 +37,7 @@
               <p><%= blog.text %></p>
                 <span><%= time_ago_in_words(blog.created_at) %>前に投稿</span>
             </div>
+            <% if user_signed_in? && current_user.id == blog.user_id %>
             <div class="card-action">
               <a href="/users/<%= current_user.id %>">詳細</a>
 
@@ -64,6 +53,6 @@
 
   <%= paginate(@blogs) %>
 
-<script type="text/javascript" src="./app.js"></script>
+<!-- <script type="text/javascript" src="./app.js"></script> -->
 </body>
 </html>
