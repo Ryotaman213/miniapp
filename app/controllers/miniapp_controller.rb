@@ -3,7 +3,7 @@ class MiniappController < ApplicationController
     before_action :move_to_index, except: :index
 
   def index
-    @blogs = Blog.all.order("created_at DESC").page(params[:page]).per(4)
+    @blogs = Blog.includes(:user).page(params[:page]).per(4).order("created_at DESC")
 
   end
 
@@ -11,7 +11,7 @@ class MiniappController < ApplicationController
   end
 
   def create
-    Blog.create(blog_params)
+    Blog.create(text: blog_params[:text], user_id: current_user.id)
   end
 
     private

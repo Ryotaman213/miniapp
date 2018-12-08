@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   get  'miniapp'     => 'miniapp#index'
   get  'miniapp/new' => 'miniapp#new'
   post 'miniapp'     => 'miniapp#create'
+  get  'users/:id'   => 'users#show'
 end

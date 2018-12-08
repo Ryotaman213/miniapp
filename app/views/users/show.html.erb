@@ -1,0 +1,20 @@
+
+
+     <% @blogs.each do |blog| %>
+      <div class="row">
+        <div class="col s12 m6">
+          <div class="card white">
+            <div class="card-content blue-text">
+              <p>あなたの投稿一覧</p>
+              <p><%= blog.text %></p>
+                <span><%= time_ago_in_words(blog.created_at) %>前に投稿</span>
+            </div>
+            <div class="card-action">
+              <a href="#">編集</a>
+              <a href="#">削除</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <%= paginate(@blogs) %>
