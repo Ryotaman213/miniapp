@@ -51,7 +51,11 @@
             </div>
             <div class="card-action">
               <a href="/users/<%= current_user.id %>">詳細</a>
+
               <%= link_to '編集', "/miniapp/#{blog.id}/edit", method: :get %>
+
+              <a href="#">編集</a>
+
               <%= link_to '削除', "/miniapp/#{blog.id}", method: :delete %>
               <% end %>
             </div>
