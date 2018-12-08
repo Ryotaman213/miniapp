@@ -14,6 +14,15 @@ class MiniappController < ApplicationController
     Blog.create(text: blog_params[:text], user_id: current_user.id)
   end
 
+  def destroy
+    blog = Blog.find(params[:id])
+    blog.destroy if blog.user_id == current_user.id
+  end
+
+  def edit
+    @blog = Blog.find(params[:id])
+  end
+
     private
       def blog_params
       params.permit(:text, :created_at)

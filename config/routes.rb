@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   get  'miniapp/new' => 'miniapp#new'
   post 'miniapp'     => 'miniapp#create'
   get  'users/:id'   => 'users#show'
+  delete 'miniapp/:id' => 'miniapp#destroy'
+  get  'miniapp/:id/edit' => 'miniapp#edit'
 end

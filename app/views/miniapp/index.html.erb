@@ -41,6 +41,7 @@
 
 
      <% @blogs.each do |blog| %>
+     <% if user_signed_in? && current_user.id == blog.user_id %>
       <div class="row">
         <div class="col s12 m6">
           <div class="card white">
@@ -50,8 +51,9 @@
             </div>
             <div class="card-action">
               <a href="/users/<%= current_user.id %>">詳細</a>
-              <a href="#">編集</a>
-              <a href="#">削除</a>
+              <%= link_to '編集', "/miniapp/#{blog.id}/edit", method: :get %>
+              <%= link_to '削除', "/miniapp/#{blog.id}", method: :delete %>
+              <% end %>
             </div>
           </div>
         </div>
