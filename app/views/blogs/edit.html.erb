@@ -1,9 +1,10 @@
-  <div class="contents row">
+
+  <div class="contents-wrapper">
     <%= form_with model: @blog , local: true do |form| %>
       <h3>
         編集する
       </h3>
     <textarea cols="30" name="text" placeholder="変更してください" rows="10"><%= @blog.text %></textarea>
-    <input type="submit" value="SENT">
+    <input type="submit" value="SENT" id="submit">
   <% end %>
 </div>
